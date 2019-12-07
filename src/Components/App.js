@@ -4,6 +4,7 @@ import './App.css';
 import Title from './Title/Title'
 import Countdown from './CountDown/Countdown';
 import Controller from './Controller/Controller';
+import Lap from './Lap/Lap';
 
 class App extends Component{//main class...
 
@@ -16,6 +17,7 @@ class App extends Component{//main class...
           sec: 0,
           mili: 0,
         },
+        lap: []
       }
   }
 
@@ -50,6 +52,19 @@ class App extends Component{//main class...
     clearInterval(this.intervalID)
   }//END of the Pause function..abs
 
+  setLap(){
+    let time = {
+      ...this.state.time
+    }
+
+    this.setState({
+      ...this.state,
+      lap: [time, ...this.state.lap]
+    })
+
+    console.log(this.state.lap)
+  }
+
   setReset(){///For Reset the Values of Stop_Watch...
     this.setState({
       ...this.state,
@@ -57,7 +72,8 @@ class App extends Component{//main class...
         min: 0,
         sec: 0,
         mili: 0
-      }
+      },
+      lap: []
     })
   }//END of the reset function...
 
@@ -71,7 +87,9 @@ class App extends Component{//main class...
                  <Countdown time={ this.state.time } />
                  <Controller start={ this.setStart.bind(this) }
                  pause={ this.setPause.bind(this) } 
-                 reset={ this.setReset.bind(this) } />
+                 reset={ this.setReset.bind(this) } 
+                 laps={ this.setLap.bind(this) } />
+                 <Lap laps={ this.state.lap } />
                </div>
           </div>
         </div>

@@ -7,7 +7,7 @@ class Title extends Component{
         super(props)
 
         this.state = {
-            title: 'Twikle Cats',
+            title: 'Stop Watch',
             color: '#000',
             isInput: false,
             isColor: false

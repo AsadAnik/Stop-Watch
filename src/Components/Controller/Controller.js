@@ -36,6 +36,11 @@ class Controller extends Component{
      //Called the function with props from another Component..   
         this.props.pause()
     }
+
+    lapHandler(event){
+        this.props.laps()
+    }
+
     resetHandler(event){
         this.setState({
             start: true,
@@ -53,23 +58,26 @@ class Controller extends Component{
 
             if(this.state.start && !this.state.reset){
                 output = (
-                    <button className="btn btn-success btn-lg px-4 mx-3" 
-                    onClick={ event => {this.startHandler(event)} }>Start</button>
+                    <div className="py-5">
+                        <button className="btn btn-success btn-lg px-4 mx-3" 
+                        onClick={ event => {this.startHandler(event)} }>Start</button>
+                    </div>
                 )
 
             }else if(this.state.pause && this.state.lab){
                 output = (
-                    <div>
+                    <div className="py-5">
                         <button className="btn btn-primary btn-lg px-4 mx-3" 
                         onClick={ event => {this.pauseHandler(event)} }>Pause</button>
 
-                        <button className="btn btn-warning btn-lg px-4 mx-3">Lab</button>
+                        <button className="btn btn-warning btn-lg px-4 mx-3" 
+                        onClick={ event => {this.lapHandler(event)} }>Lab</button>
                     </div>
                 )
 
             }else if(this.state.start && this.state.reset){
                 output = (
-                    <div>
+                    <div className="py-5">
                         <button className="btn btn-success btn-lg px-4 mx-3" 
                         onClick={ event => {this.startHandler(event)} }>Start</button>
 

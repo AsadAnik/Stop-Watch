@@ -9,8 +9,7 @@ class Title extends Component{
         this.state = {
             title: 'Stop Watch',
             color: '#000',
-            isInput: false,
-            isColor: false
+            isInput: false
         }
     }
 
@@ -46,23 +45,6 @@ class Title extends Component{
         })
     }
 
-    clickColor(){
-        this.setState({
-            ...this.state,
-            isColor: true
-        })
-    }
-
-    inputColor(event){
-        // console.log(event.target.value)
-        let colorValue = event.target.value
-        this.setState({
-            ...this.state,
-            color: colorValue
-        })
-        console.log(this.state.color)
-    }
-
     render(){
 
         let output = null
@@ -88,25 +70,9 @@ class Title extends Component{
             )
         }
 
-        ///The OutPut2....
-            let output2 = null
-
-            if(this.state.isColor){
-                output2 = (
-                    <input type="color" onFocus={ (event) => this.inputColor(event) } />
-                )
-            }else{
-                output2 = (
-                    <span className="colorIcon" onClick={ () => this.clickColor() }>
-                        <i class="fa fa-paint-brush" aria-hidden="true"></i>
-                    </span>
-                )
-            }
-
         return(
             <div className="Title">
                 { output }
-                { output2 }
             </div>
         )
     }
